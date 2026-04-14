@@ -49,3 +49,26 @@ plt.title("Score Vs Comments")
 plt.legend()
 plt.savefig("outputs/chart3_scatter.png")
 plt.close()
+
+# DAshboard
+fig, axes = plt.subplots(1,3,figsize = (18,5))
+
+# Chart 1
+axes[0].barh(top_stories["short_title"], top_stories["score"])
+axes[0].set_title("Top Stories")
+axes[0].invert_yaxis()
+
+# Chart 2
+axes[1].bar(category_counts.index, category_counts.values)
+axes[1].set_title("Categories")
+
+# Chart 3
+axes[2].scatter(popular["score"], popular["num_comments"], label="Popular")
+axes[2].scatter(not_popular["score"], not_popular["num_comments"], label="Not Popular")
+axes[2].set_title("Score Vs Comments")
+axes[2].legend()
+fig.suptitle("TrendPulse Dashboard")
+plt.savefig("outputs/dashboard.png")
+plt.close()
+
+print("All Charts saved in Outputs Folder")
